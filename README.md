@@ -76,52 +76,6 @@ services:
 volumes:
  pgdata:
 
-</code></pre><div class="zeroclipboard-container">
-    <clipboard-copy aria-label="Copy" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 tooltipped-no-delay d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="version: &quot;3.1&quot;
-
-services:
-  peppermint_postgres:
-    container_name: peppermint_postgres
-    image: postgres:latest
-    restart: always
-    ports:
-      - 5432:5432
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: peppermint
-      POSTGRES_PASSWORD: 1234
-      POSTGRES_DB: peppermint
-
-  peppermint:
-    container_name: peppermint
-    image: pepperlabs/peppermint:latest
-    ports:
-      - 3000:3000
-      - 5003:5003
-    restart: always
-    depends_on:
-      - peppermint_postgres
-    healthcheck:
-      test: [&quot;CMD&quot;, &quot;sh&quot;, &quot;-c&quot;, &quot;wget --spider $$API_URL&quot;]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-    environment:
-      DB_USERNAME: &quot;peppermint&quot;
-      DB_PASSWORD: &quot;1234&quot;
-      DB_HOST: &quot;peppermint_postgres&quot;
-      SECRET: 'peppermint4life'
-      API_URL: &quot;http://server-ip:5003&quot;
-
-volumes:
- pgdata:
- 
-<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">完成后，您可以转到已添加到撰写文件中的 server-ip:3000 并登录。</font></font></p>
-<p dir="auto"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">默认登录凭据是</font></font></p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>admin@admin.com
-1234
-</code></pre><div class="zeroclipboard-container">
     <clipboard-copy aria-label="Copy" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 tooltipped-no-delay d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="admin@admin.com
 1234" tabindex="0" role="button">
       <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
